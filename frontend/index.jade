@@ -1,0 +1,35 @@
+include ./components/head/head
+include ./components/svg-icons/svg-icons
+include ./components/s-header/s-header
+include ./components/s-posts-wall/s-posts-wall
+include ./components/s-posts-blocks/s-posts-blocks
+include ./components/s-about-me-aside/s-about-me-aside
+include ./components/s-subscribe/s-subscribe
+include ./components/s-pinterest/s-pinterest
+include ./components/s-latest-posts/s-latest-posts
+include ./components/s-latest-posts-aside/s-latest-posts-aside
+include ./components/s-tags/s-tags
+include ./components/s-instagram/s-instagram
+include ./components/s-footer/s-footer
+
+doctype html
+html
+    +head()
+    body
+        +svg-icons()
+        main
+            .wrapper
+                +s-header()
+                +s-latest-posts()
+                .content
+                    .main_content
+                        +s-posts-wall()
+                        +s-posts-blocks()
+                    .aside_content
+                        +s-about-me-aside()
+                        +s-subscribe()
+                        +s-pinterest()
+                        +s-latest-posts-aside()
+                        +s-tags()
+            +s-instagram()
+        +s-footer()

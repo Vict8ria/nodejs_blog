@@ -1,0 +1,28 @@
+include ../s-header-image/s-header-image
+
+mixin s-header()
+    header.header
+        .wrapper
+            nav.main_menu
+                ul.main_menu__items.header__item
+                    li.main_menu__item
+                        a.main_menu__link(href='/about') About
+                    li.main_menu__item
+                        a.main_menu__link(href='/') Categories
+                    li.main_menu__item
+                        a.main_menu__link(href='/') Search
+            a.logo(href='/') Crabapple
+            ul.socials.header__item
+                li.socials__item
+                    a.socials__link(href='/') Facebook
+                li.socials__item
+                    a.socials__link(href='/') Twitter
+                li.socials__item
+                    a.socials__link(href='/') Instagram
+                li.socials__item
+                    a.socials__link(href='/') Pinterest
+                li.socials__item
+                    a.socials__link(href='/') BlogLovin
+                li.socials__item
+                    a.socials__link(href='/') LinkedIn
+            +s-header-image()
