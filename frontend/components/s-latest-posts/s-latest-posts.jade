@@ -1,22 +1,22 @@
 mixin s-latest-posts()
     section.posts
-        h6.posts__header Latest Posts
+        h6.posts__header {!sLatestPosts.LatestPostsTitle!}
         .posts__items
-            a.posts__item(href='/')
-                img(src='/img/latest_posts/food.jpg', alt='food')
+            a.posts__item(href='{!sLatestPosts.LatestPostsBlocks.0.LatestPostsBlockLink!}')
+                img(src='{!sLatestPosts.LatestPostsBlocks.0.LatestPostsBlockImage!}', alt='{!sLatestPosts.LatestPostsBlocks.0.LatestPostsBlockImageDesc!}')
                 .posts__text
-                    p.section Food
-                    h3 Top 5 mushroom racipes
-                    p.post_date April 21, 2017
-            a.posts__item(href='/')
-                img(src='/img/latest_posts/travel.jpg', alt='travel')
+                    p.section {!sLatestPosts.LatestPostsBlocks.0.LatestPostsBlockSection!}
+                    h3 {!sLatestPosts.LatestPostsBlocks.0.LatestPostsBlockTitle!}
+                    p.post_date {!sLatestPosts.LatestPostsBlocks.0.LatestPostsBlockDate!}
+            a.posts__item(href='{!sLatestPosts.LatestPostsBlocks.1.LatestPostsBlockLink!}')
+                img(src='{!sLatestPosts.LatestPostsBlocks.1.LatestPostsBlockImage!}', alt='{!sLatestPosts.LatestPostsBlocks.1.LatestPostsBlockImageDesc!}')
                 .posts__text
-                    p.section Travel
-                    h3 Oldest Arcitecture in NYC
-                    p.post_date April 21, 2017
-            a.posts__item(href='/')
-                img(src='/img/latest_posts/design.jpg', alt='design')
+                    p.section {!sLatestPosts.LatestPostsBlocks.1.LatestPostsBlockSection!}
+                    h3 {!sLatestPosts.LatestPostsBlocks.1.LatestPostsBlockTitle!}
+                    p.post_date {!sLatestPosts.LatestPostsBlocks.1.LatestPostsBlockDate!}
+            a.posts__item(href='{!sLatestPosts.LatestPostsBlocks.2.LatestPostsBlockLink!}')
+                img(src='{!sLatestPosts.LatestPostsBlocks.2.LatestPostsBlockImage!}', alt='{!sLatestPosts.LatestPostsBlocks.1.LatestPostsBlockImageDesc!}')
                 .posts__text
-                    p.section Design
-                    h3 How to build a BRAND
-                    p.post_date April 21, 2017
+                    p.section {!sLatestPosts.LatestPostsBlocks.2.LatestPostsBlockSection!}
+                    h3 {!sLatestPosts.LatestPostsBlocks.2.LatestPostsBlockTitle!}
+                    p.post_date {!sLatestPosts.LatestPostsBlocks.2.LatestPostsBlockDate!}

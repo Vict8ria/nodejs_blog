@@ -1,0 +1,22 @@
+include ./../components/head/head
+
+doctype html
+html
+    +head()
+    link(href='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css', rel='stylesheet')
+    body
+        .container
+            #admin
+                .admin__items(v-cloak)
+                    h5.admin__title Admin
+                    aside.side-nav.white.fixed(style="width: 240px; transform: translateX(0%); position: fixed;")
+                        .side-nav-wrapper
+                        ul.sidebar-menu
+                            li.no-padding(v-for="(value, propertyName, index) in adminData", :class="{'is-active': show == index}")
+                                a.collapsible-header.waves-effect.waves-grey(@click.prevent="show = index")
+                                    |  {{ propertyName.match(/[A-Z]+[^A-Z]*|[^A-Z]+/g).filter(function(item, index){ return index > 0}).join(' ') }}
+                            li
+                                a.waves-effect.waves-light.btn-small(@click="save") save
+                    main(style="padding-left: 300px;")
+                        admin_edit(:admindata="adminData", :show="show")
+        script(src="/js/admin.js")

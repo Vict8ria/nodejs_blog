@@ -1,23 +1,27 @@
 mixin s-latest-posts-aside()
     .latest_posts.aside__item
-        h4.section__header Latest Posts
+        h4.section__header {!sLatestPostsAside.LatestPostsTitle!}
         article.latest_post
-            img.latest_post__image(src='/img/latest_posts/small/music.jpg', alt='music')
+            img.latest_post__image(src='{!sLatestPostsAside.LatestPostsBlocks.0.LatestPostsBlockImage!}',
+                alt='{!sLatestPostsAside.LatestPostsBlocks.0.LatestPostsBlockImageDesc!}')
             .latest_post__text
-                strong Moxine Headphone by Andy Meerow
-                i.post_date November 16, 2015
+                strong {!sLatestPostsAside.LatestPostsBlocks.0.LatestPostsBlockTitle!}
+                i.post_date {!sLatestPostsAside.LatestPostsBlocks.0.LatestPostsBlockDate!}
         article.latest_post
-            img.latest_post__image(src='/img/latest_posts/small/typography.jpg', alt='typography')
+            img.latest_post__image(src='{!sLatestPostsAside.LatestPostsBlocks.1.LatestPostsBlockImage!}',
+            alt='{!sLatestPostsAside.LatestPostsBlocks.1.LatestPostsBlockImageDesc!}')
             .latest_post__text
-                strong Amazing typography collection
-                i.post_date November 16, 2015
+                strong {!sLatestPostsAside.LatestPostsBlocks.1.LatestPostsBlockTitle!}
+                i.post_date {!sLatestPostsAside.LatestPostsBlocks.1.LatestPostsBlockDate!}
         article.latest_post
-            img.latest_post__image(src='/img/latest_posts/small/food.jpg', alt='food')
+            img.latest_post__image(src='{!sLatestPostsAside.LatestPostsBlocks.2.LatestPostsBlockImage!}',
+            alt='{!sLatestPostsAside.LatestPostsBlocks.2.LatestPostsBlockImageDesc!}')
             .latest_post__text
-                strong 5 best Moroccan Racipe
-                i.post_date November 16, 2015
+                strong {!sLatestPostsAside.LatestPostsBlocks.2.LatestPostsBlockTitle!}
+                i.post_date {!sLatestPostsAside.LatestPostsBlocks.2.LatestPostsBlockDate!}
         article.latest_post
-            img.latest_post__image(src='/img/latest_posts/small/phone.jpg', alt='phone')
+            img.latest_post__image(src='{!sLatestPostsAside.LatestPostsBlocks.3.LatestPostsBlockImage!}',
+            alt='{!sLatestPostsAside.LatestPostsBlocks.3.LatestPostsBlockImageDesc!}')
             .latest_post__text
-                strong What to expect from iPhone 7
-                i.post_date November 16, 2015
+                strong {!sLatestPostsAside.LatestPostsBlocks.3.LatestPostsBlockTitle!}
+                i.post_date {!sLatestPostsAside.LatestPostsBlocks.3.LatestPostsBlockDate!}

@@ -1,34 +1,30 @@
 mixin s-posts-blocks()
     .others__posts
         article.post__half
-            img(src='/img/article/small/food.jpg', alt='food')
-            .section Food
-            h3 Memories of Milano
-            p
-                | Ad pri posse falli veritus. Sea ut suas habemus erroribus, idque dicat erant eu duo, ne his tractatos accommodare mediocritatem. Id mundi deserunt praesent est, tempor salutandi definitionem quo ea, eum nemore partiendo eu.
-            a(href='/') Read More
-            span.post_date April 21, 2017
+            img(src='{!sPosts2.PostsBlocks.0.PostsBlockImage!}', alt='{!sPosts2.PostsBlocks.0.PostsBlockImageDesc!}')
+            .section {!sPosts2.PostsBlocks.0.PostsBlockSection!}
+            h3 {!sPosts2.PostsBlocks.0.PostsBlockTitle!}
+            p {!sPosts2.PostsBlocks.0.PostsBlockText.0!}
+            a(href='{!sPosts2.PostsBlocks.0.PostsBlockLink!}') Read More
+            span.post_date {!sPosts2.PostsBlocks.0.PostsBlockDate!}
         article.post__half
-            img(src='/img/article/small/nature.jpg', alt='nature')
-            .section Food
-            h3 Cafe find: las vecinas eco-bar
-            p
-                | Ad pri posse falli veritus. Sea ut suas habemus erroribus, idque dicat erant eu duo, ne his tractatos accommodare mediocritatem. Id mundi deserunt praesent est, tempor salutandi definitionem quo ea, eum nemore partiendo eu.
-            a(href='/') Read More
-            span.post_date April 21, 2017
+            img(src='{!sPosts2.PostsBlocks.1.PostsBlockImage!}', alt='{!sPosts2.PostsBlocks.1.PostsBlockImageDesc!}')
+            .section {!sPosts2.PostsBlocks.1.PostsBlockSection!}
+            h3 {!sPosts2.PostsBlocks.1.PostsBlockTitle!}
+            p {!sPosts2.PostsBlocks.1.PostsBlockText.0!}
+            a(href='{!sPosts2.PostsBlocks.1.PostsBlockLink!}') Read More
+            span.post_date {!sPosts2.PostsBlocks.0.PostsBlockDate!}
         article.post__half
-            img(src='/img/article/small/street.jpg', alt='street')
-            .section Art
-            h3 Palais de Tokyo Paris
-            p
-                | Ad pri posse falli veritus. Sea ut suas habemus erroribus, idque dicat erant eu duo, ne his tractatos accommodare mediocritatem. Id mundi deserunt praesent est, tempor salutandi definitionem quo ea, eum nemore partiendo eu.
-            a(href='/') Read More
-            span.post_date April 21, 2017
+            img(src='{!sPosts2.PostsBlocks.2.PostsBlockImage!}', alt='{!sPosts2.PostsBlocks.0.PostsBlockImageDesc!}')
+            .section {!sPosts2.PostsBlocks.2.PostsBlockSection!}
+            h3 {!sPosts2.PostsBlocks.2.PostsBlockTitle!}
+            p {!sPosts2.PostsBlocks.2.PostsBlockText.0!}
+            a(href='{!sPosts2.PostsBlocks.2.PostsBlockLink!}') Read More
+            span.post_date {!sPosts2.PostsBlocks.2.PostsBlockDate!}
         article.post__half
-            img(src='/img/article/small/music.jpg', alt='music')
-            h3 November soundcloud playlist
-            .section Music
-            p
-                | Ad pri posse falli veritus. Sea ut suas habemus erroribus, idque dicat erant eu duo, ne his tractatos accommodare mediocritatem. Id mundi deserunt praesent est, tempor salutandi definitionem quo ea, eum nemore partiendo eu.
-            a(href='/') Read More
-            span.post_date April 21, 2017
+            img(src='{!sPosts2.PostsBlocks.3.PostsBlockImage!}', alt='{!sPosts2.PostsBlocks.0.PostsBlockImageDesc!}')
+            .section {!sPosts2.PostsBlocks.3.PostsBlockSection!}
+            h3 {!sPosts2.PostsBlocks.3.PostsBlockTitle!}
+            p {!sPosts2.PostsBlocks.3.PostsBlockText.0!}
+            a(href='{!sPosts2.PostsBlocks.3.PostsBlockLink!}') Read More
+            span.post_date {!sPosts2.PostsBlocks.3.PostsBlockDate!}

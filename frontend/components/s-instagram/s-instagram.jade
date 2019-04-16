@@ -2,16 +2,22 @@ mixin s-instagram()
     section.instagram_section
         a(href='/')
             ul.instagram__items
-                li.instagram__item
-                    img.instagram__image(src='/img/instagram/1.jpg', alt='instagram image 1')
-                li.instagram__item
-                    img.instagram__image(src='/img/instagram/2.jpg', alt='instagram image 2')
-                li.instagram__item
-                    img.instagram__image(src='/img/instagram/3.jpg', alt='instagram image 3')
-                li.instagram__item
-                    img.instagram__image(src='/img/instagram/4.jpg', alt='instagram image 4')
-                li.instagram__item
-                    img.instagram__image(src='/img/instagram/5.jpg', alt='instagram image 5')
-                li.instagram__item
-                    img.instagram__image(src='/img/instagram/6.jpg', alt='instagram image 6')
+                 li.instagram__item
+                     img.instagram__image(src="{!sInstagram.InstagramImageItems.0.InstagramImageItemLink!}",
+                     alt="{!sInstagram.InstagramImageItems.0.InstagramImageItemDesc!}")
+                 li.instagram__item
+                     img.instagram__image(src="{!sInstagram.InstagramImageItems.1.InstagramImageItemLink!}",
+                     alt="{!sInstagram.InstagramImageItems.1.InstagramImageItemDesc!}")
+                 li.instagram__item
+                     img.instagram__image(src="{!sInstagram.InstagramImageItems.2.InstagramImageItemLink!}",
+                     alt="{!sInstagram.InstagramImageItems.2.InstagramImageItemDesc!}")
+                 li.instagram__item
+                     img.instagram__image(src="{!sInstagram.InstagramImageItems.3.InstagramImageItemLink!}",
+                     alt="{!sInstagram.InstagramImageItems.3.InstagramImageItemDesc!}")
+                 li.instagram__item
+                     img.instagram__image(src="{!sInstagram.InstagramImageItems.4.InstagramImageItemLink!}",
+                     alt="{!sInstagram.InstagramImageItems.4.InstagramImageItemDesc!}")
+                 li.instagram__item
+                     img.instagram__image(src="{!sInstagram.InstagramImageItems.5.InstagramImageItemLink!}",
+                     alt="{!sInstagram.InstagramImageItems.5.InstagramImageItemDesc!}")
             span.instagram__text Follow us on instagram

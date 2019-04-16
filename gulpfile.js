@@ -7,10 +7,13 @@ let browserify = require('gulp-browserify');
 let autoprefixer = require('gulp-autoprefixer');
 let stylus = require('gulp-stylus');
 let rename = require("gulp-rename");
+let vueify = require('gulp-vueify');
+let replaceName = require('gulp-replace-name');
+
 
 
 gulp.task('jade', () => {
-    return gulp.src('./frontend/index.jade')
+    return gulp.src('./frontend/**/*.jade')
         .pipe(jade({
             pretty: true
         }))
@@ -19,7 +22,8 @@ gulp.task('jade', () => {
 });
 
 gulp.task('js', () => {
-    return gulp.src('./src/assets/js/main.js')
+    return gulp.src('./src/assets/js/admin.js')
+        .pipe(plumber())
         .pipe(browserify())
         .pipe(babel({
             presets: [
@@ -33,13 +37,20 @@ gulp.task('js', () => {
                 ]
             ]
         }))
-        .pipe(gulp.dest('./build/js'))
-        .pipe(browserSync.stream())
+        .pipe(gulp.dest('./build/js/'))
+});
+
+gulp.task('vue', () => {
+    return gulp.src('./src/assets/js/vue/**/*.vue')
+        .pipe(plumber())
+        .pipe(vueify())
+        .pipe(replaceName(/.js/g, '.component.js'))
+        .pipe(gulp.dest('./src/assets/js/vue'))
 });
 
 gulp.task('styles', () => {
     return gulp.src('./src/assets/styles/*.styl')
-        .pipe(rename('/main.css'))
+        .pipe(rename('/admin.css'))
         .pipe(plumber())
         .pipe(stylus({
             compress: false
@@ -60,12 +71,13 @@ gulp.task('browser-sync', function() {
     });
 });
 
-gulp.task('build', ['styles', 'js', 'jade']);
+gulp.task('build', ['styles', 'vue', 'js', 'jade']);
 
 gulp.task('watch', function () {
-    gulp.watch(['./src/assets/styles/**/*.styl'], ['styles']);
-    gulp.watch(['./src/assets/js/**/*.js'], ['js']);
-    gulp.watch(['./frontend/**/*.jade'], ['jade']);
+    gulp.watch(['src/assets/styles/**/*.styl'], ['styles']);
+    gulp.watch(['src/assets/js/**/*.js', '!src/assets/js/**/*.component.js'], ['js']);
+    gulp.watch(['src/assets/js/**/*.vue'], ['vue', 'js']);
+    gulp.watch(['frontend/**/*.jade'], ['jade']);
 });
 
 gulp.task('default', ['build', 'watch', 'browser-sync']);
