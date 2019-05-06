@@ -5,6 +5,7 @@ const port = 80;
 const requestHandler = (request, response) => {
 
     let url = request.url;
+    let jsonData = null;
 
     if(url === '/api/data/update') {
 
@@ -35,18 +36,13 @@ const requestHandler = (request, response) => {
             response.end();
         });
 
-
-
-        // записать в файл
-        // ответить клиенту об ошибке или успешном сохренении
-        // проверить данные на json
-
         return;
     }
 
     switch(url) {
         case '/':
             url = '/index.html';
+            jsonData = './data/index.json';
             break;
         case '/admin':
             url = '/admin/index.html';
@@ -62,12 +58,14 @@ const requestHandler = (request, response) => {
         return;
     }
 
-    fs.readFile(path, function (err, fileContent) {
+    fs.readFile(path, function (err, content) {
         response.writeHeader(200, {"Content-Type": getContentType(url)});
-        response.write(fileContent);
+        if(getContentType(url) === 'text/html' && jsonData !== null) {
+            content = prepareTemplate(jsonData, path);
+        }
+        response.write(content);
         response.end();
     });
-
 };
 
 const server = http.createServer(requestHandler);
@@ -89,6 +87,7 @@ function getContentType(url){
         'html': 'text/html',
         'css': 'text/css',
         'js': 'text/javascript',
+        'json': 'application/json'
     };
 
     for(let ext of Object.keys(extentions)){
@@ -99,39 +98,28 @@ function getContentType(url){
     return null;
 }
 
-var jsonContent = fs.readFileSync('./data/index.json', 'utf8');
-let lang = JSON.parse(jsonContent);
+function prepareTemplate(json, html) {
+    let json_str = fs.readFileSync(json, 'utf8');
+    let json_obj = JSON.parse(json_str);
 
-let templateLink = '../build/index.html'; //тут данные из build/index.html (если для главной)
-let templateHtml = fs.readFileSync(templateLink, 'utf8'); //admin page html
+    let link = html; //тут данные из build/index.html (если для главной)
+    let code = fs.readFileSync(link, 'utf8');
 
-/**
- * ищем через регулярку все вхождения {!string!}, сама регулярка: /{![^{!]+!}/ig
- * и заменяем найденный текст на данные, которые находит в lang обьекте
- */
+    let regexp = /{!([^{!]+)!}/;
 
-let regexp = /{!([^{!]+)!}/;
+    while(code.match(regexp)!== null)  {
 
-let match = templateHtml.match(regexp);
+        let match = code.match(regexp);
+        let temp = match[0];
+        let path = match[1];
+        path = path.split('.');
 
-while(templateHtml.match(regexp)!== null)  {
-
-    let match = templateHtml.match(regexp);
-    let temp = match[0];
-    let path = match[1];
-    path = path.split('.');
-
-    let u = lang;
-    for(let path_item of path) {
-        u = u[path_item];
+        let obj = json_obj;
+        for(let path_item of path) {
+            obj = obj[path_item];
+        }
+        code = code.replace(temp, obj);
     }
-    templateHtml = templateHtml.replace(temp, u);
+
+    return code;
 }
-
-
-fs.writeFile(templateLink, templateHtml, function(err) {
-    if(err) {
-        return console.log(err);
-    }
-});
-
