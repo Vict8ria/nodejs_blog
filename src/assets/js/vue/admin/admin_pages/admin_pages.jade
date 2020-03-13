@@ -1,0 +1,12 @@
+.admin-wrap
+    ul.breadcrumb
+        li.breadcrumb__item
+            router-link.breadcrumb__link(to='/admin') Admin
+        li.breadcrumb__item
+            span.breadcrumb__current Pages
+    .card
+        .card-content
+            h4 Pages
+            ul.collection
+                li.collection-item(v-for="page in pages")
+                    router-link.aside-menu__link(:to="{ path: '/admin/pages/' + page }", :page_name="page") {{ page[0].toUpperCase() + page.slice(1) }}

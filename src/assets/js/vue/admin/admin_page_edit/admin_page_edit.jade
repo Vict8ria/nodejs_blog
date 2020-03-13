@@ -1,0 +1,44 @@
+.admin__page(v-cloak)
+
+    ul.breadcrumb
+        li.breadcrumb__item
+            router-link.breadcrumb__link(to='/admin') Admin
+        li.breadcrumb__item
+            router-link.breadcrumb__link(to='/admin/pages') Pages
+        li.breadcrumb__item
+            span.breadcrumb__current {{ pageName[0].toUpperCase() + pageName.slice(1) }}
+    .card
+        .card-content
+            .row
+                .col
+                    button.pink.lighten-1.btn(@click="save") Save
+                .col
+                    button.transparent-btn.btn
+                        router-link(:to="{ path: '/admin/pages/'}") Back
+            .row
+                .col
+                    h4 {{ pageName[0].toUpperCase() + pageName.slice(1) }} page
+            div(v-for='(tab, key, index) in pageData', :key='index')
+                .row
+                    .col
+                        h5 {{ key.match(/[A-Z]+[^A-Z]*|[^A-Z]+/g).filter(function(item, index){ return index > 0}).join(' ') }}
+                ul
+                    li(v-for='(tabItem, tabKey) in tab')
+                        div.row(v-if="typeof tabItem === 'string'")
+                            .col.s12
+                                strong {{ tabKey.match(/[A-Z]+[^A-Z]*|[^A-Z]+/g).join(' ') }}
+                                input(v-model="tab[tabKey]")
+                        div(v-if="typeof tabItem === 'object'")
+                            .row
+                                .col.s12
+                                    strong {{ tabKey.match(/[A-Z]+[^A-Z]*|[^A-Z]+/g).join(' ') }}
+                            .row.list(v-for='data in tabItem')
+                                .col.s6(v-for='(item, datakey) in data')
+                                    strong {{ datakey.match(/[A-Z]+[^A-Z]*|[^A-Z]+/g).join(' ') }}
+                                    input(v-model="data[datakey]")
+            .row
+                .col
+                    button.pink.lighten-1.btn(@click="save") Save
+                .col
+                    button.red.lighten-2.btn
+                        router-link(:to="{ path: '/admin/pages/'}") cancel

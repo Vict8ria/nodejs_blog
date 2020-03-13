@@ -1,0 +1,72 @@
+/**
+  Admin panel
+ */
+
+
+.admin__wrapper
+  display: flex
+  h4
+    margin-bottom 35px
+  .aside-menu
+    transform translateX(0px)
+    .aside-menu__logo
+      text-align center
+      padding-top 32px
+      padding-bottom 55px
+      font-family 'Ailerons', sans-serif
+      border-bottom 1px solid rgba(0,0,0,0.14)
+      .logo-border
+        border 2px dotted #000
+        max-width 200px
+        margin auto
+        span
+          font-size 24px
+    .aside-menu__item
+      .aside-menu__link
+        padding 0 30px
+        line-height 44px
+        display block
+        cursor pointer
+  main
+    padding 40px 40px 40px 340px
+    max-width 1100px
+    width 100%
+
+  .breadcrumb
+    display flex
+    padding-bottom 50px
+    &__item
+      color rgba(0, 0, 0, 0.5)
+      padding-right 30px
+      position relative
+      font-size 15px
+      &:after
+        content '/'
+        position absolute
+        top 0px
+        right 10px
+        color inherit
+      .breadcrumb__link
+        color inherit
+        font-size inherit
+      span
+        font-size inherit
+      &:last-child
+        color black
+        &:after
+          content none
+  .collection
+    &-item
+      .aside-menu__link
+        color #ec407a
+  button
+    box-shadow none
+    *
+      color #fff
+    &.transparent-btn
+      border 1px solid #ec407a
+      background-color transparent
+      color #ec407a
+      *
+        color #ec407a
+

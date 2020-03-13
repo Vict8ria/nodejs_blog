@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+
+  db:
+    image: mysql
+    container_name: node_blog_mysql
+    restart: on-failure:3
+    command: mysqld --default-authentication-plugin=mysql_native_password
+    ports:
+    - 3307:3306
+    networks:
+    - default
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 1
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: blog

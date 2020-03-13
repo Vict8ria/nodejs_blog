@@ -6,14 +6,14 @@ let browserSync = require('browser-sync').create();
 let browserify = require('gulp-browserify');
 let autoprefixer = require('gulp-autoprefixer');
 let stylus = require('gulp-stylus');
-let rename = require("gulp-rename");
 let vueify = require('gulp-vueify');
 let replaceName = require('gulp-replace-name');
+var image = require('gulp-image');
 
 
 
 gulp.task('jade', () => {
-    return gulp.src('./frontend/**/*.jade')
+    return gulp.src(['!./frontend/components/**/*.jade', './frontend/**/*.jade'])
         .pipe(jade({
             pretty: true
         }))
@@ -22,7 +22,7 @@ gulp.task('jade', () => {
 });
 
 gulp.task('js', () => {
-    return gulp.src('./src/assets/js/admin.js')
+    return gulp.src('./src/assets/js/**/*.js')
         .pipe(plumber())
         .pipe(browserify())
         .pipe(babel({
@@ -50,7 +50,6 @@ gulp.task('vue', () => {
 
 gulp.task('styles', () => {
     return gulp.src('./src/assets/styles/*.styl')
-        .pipe(rename('/admin.css'))
         .pipe(plumber())
         .pipe(stylus({
             compress: false
@@ -62,6 +61,16 @@ gulp.task('styles', () => {
         .pipe(gulp.dest('./build/styles/'))
 });
 
+gulp.task('images', function() {
+    return gulp.src('./src/assets/images/**')
+        .pipe(image())
+        .pipe(gulp.dest('./build/img/'));
+});
+
+gulp.task('fonts', function() {
+    return gulp.src('./src/assets/fonts/**')
+        .pipe(gulp.dest('./build/fonts/'))
+});
 
 gulp.task('browser-sync', function() {
     browserSync.init({

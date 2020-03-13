@@ -1,0 +1,34 @@
+[
+  {
+    "path": "/",
+    "regexp": "^\/$",
+    "data": "../../data/index.json",
+    "controller": "PagesController",
+    "method": "IndexAction"
+  },
+  {
+    "path": "/admin/pages",
+    "regexp": "^\/admin\/?.*$",
+    "data": "../../data/admin.json",
+    "controller": "AdminController",
+    "method": "AdminAction"
+  },
+  {
+    "path": "/api/data",
+    "regexp": "^\/api\/data$",
+    "controller": "ApiPagesController",
+    "method": "GetData"
+  },
+  {
+    "path": "/api/data/update",
+    "regexp": "/api/data/update",
+    "controller": "ApiPagesController",
+    "method": "UpdateData"
+  },
+  {
+    "path": "/api/get-pages",
+    "regexp": "/api/get-pages",
+    "controller": "ApiPagesController",
+    "method": "GetPages"
+  }
+]
